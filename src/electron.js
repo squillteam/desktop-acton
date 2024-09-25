@@ -77,7 +77,7 @@ ipcMain.on('printer-result', (_, message) => {
     console.log('main process:', message);
 
     const device = new escpos.Network('10.0.6.2', 9100);
-    const options = { encoding: 'GB18030' /* default */ };
+    const options = { encoding: 'utf8' /* default */ };
     const printer = new escpos.Printer(device, options);
 
     device.open((error) => {
@@ -88,15 +88,17 @@ ipcMain.on('printer-result', (_, message) => {
 
         printer
             .font('a')
-            .align('ct')
+            .align('CT')
             .style('bu')
             .size(1, 1)
             .text(`Nome: ${message.name}`)
+            .feed(1)
+            .align('LT')
             .text(`Metodologia: ${message.methodology}`)
-            .text(`Nível: ${message.level}`)
+            .text(`Nivel: ${message.level}`)
             .text(`Fase: ${message.stage}`);
         
-        printer.feed(1);
+        printer.feed(2);
 
         if (message.specialNeeds && message.specialNeeds.length > 0) {
             printer.text('Necessidades especiais:');
@@ -106,7 +108,7 @@ ipcMain.on('printer-result', (_, message) => {
             });
         }
 
-        printer.feed(1);
+        printer.feed(2);
         printer.cut();
         printer.close();
     });
