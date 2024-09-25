@@ -1,6 +1,7 @@
 const { app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
 const path = require('path');
 const escpos = require('escpos');
+escpos.Network = require('escpos-network');
 
 const createScreen = () => {
     const width = 1024;

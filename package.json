@@ -27,6 +27,7 @@
     "electron-builder": "^25.0.5"
   },
   "dependencies": {
-    "escpos": "^3.0.0-alpha.6"
+    "escpos": "^3.0.0-alpha.6",
+    "escpos-network": "^3.0.0-alpha.5"
   }
 }
