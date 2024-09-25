@@ -1,13 +1,30 @@
 {
   "name": "acton",
+  "description": "Acton application for desktop",
   "version": "1.0.0",
-  "main": "src/main.js",
+  "main": "public/electron.js",
+  "author": "David Gaspar <davidgaspar.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder --ia32"
+  },
+  "build": {
+    "appId": "app.vercel.web-acton",
+    "productName": "Acton",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "public/electron.js"
+    ],
+    "win": {
+      "target": "nsis"
+    }
   },
   "devDependencies": {
-    "electron": "^32.1.2"
+    "electron": "^32.1.2",
+    "electron-builder": "^25.0.5"
   },
   "dependencies": {
     "escpos": "^3.0.0-alpha.6"

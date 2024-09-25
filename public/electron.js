@@ -3,9 +3,15 @@ const path = require('path');
 const escpos = require('escpos');
 
 const createScreen = () => {
+    const width = 1024;
+    const height = 768;
+
     const screen = new BrowserWindow({
-        width: 800,
-        height: 600,
+        minWidth: width,
+        minHeight: height,
+        width,
+        height,
+        // titleBarStyle: 'hidden',
         webPreferences: {
             nodeIntegration: false,  // Disable Node.js in renderer for security
             contextIsolation: true,  // Isolate context to prevent direct access to Electron APIs
@@ -13,7 +19,8 @@ const createScreen = () => {
         },
     });
     
-    screen.loadURL('http://localhost:3000');
+    screen.menuBarVisible = false;
+    screen.loadURL('https://web-acton.vercel.app');
     
     globalShortcut.register('CommandOrControl+Shift+I', () => {
         screen.webContents.openDevTools();
