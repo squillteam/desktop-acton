@@ -1,4 +1,4 @@
-const { app, BrowserWindow, globalShortcut } = require('electron');
+const { app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
 const path = require('path');
 
 const createScreen = () => {
@@ -40,4 +40,8 @@ app.on('window-all-closed', () => {
 
 app.on('will-quit', () => {
     globalShortcut.unregisterAll();
+});
+
+ipcMain.on('printer-result', (_, message) => {
+    console.log('main process:', message);
 });
