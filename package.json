@@ -2,7 +2,7 @@
   "name": "acton",
   "description": "Acton application for desktop",
   "version": "1.0.0",
-  "main": "public/electron.js",
+  "main": "src/electron.js",
   "author": "David Gaspar <davidgaspar.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -13,10 +13,9 @@
     "appId": "app.vercel.web-acton",
     "productName": "Acton",
     "files": [
-      "dist/**/*",
       "node_modules/**/*",
       "package.json",
-      "public/electron.js"
+      "src/**/*"
     ],
     "win": {
       "target": "nsis"
